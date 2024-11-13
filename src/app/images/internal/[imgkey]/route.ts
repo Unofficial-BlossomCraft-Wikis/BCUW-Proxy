@@ -8,7 +8,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ imgkey: 
     return new NextResponse('Image not found', { status: 404 });
   }
 
-  const contentType = imgResponse.headers.get("content-type") || "application/octet-stream";
+  const contentType = imgResponse.headers.get("content-type") ?? "application/octet-stream";
   const imgBuffer = await imgResponse.arrayBuffer();
 
   return new NextResponse(imgBuffer, {
