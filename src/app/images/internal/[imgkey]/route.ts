@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 
 export async function GET(req: Request, { params }: { params: { imgkey: string } }) {
-  const imgResponse = await fetch(`https://utfs.io/a/co6j4hk884/${params.imgkey}`);
+  const paramsAwaited = await params;
+  const imgResponse = await fetch(`https://utfs.io/a/co6j4hk884/${paramsAwaited.imgkey}`);
   
   if (!imgResponse.ok) {
     return new NextResponse('Image not found', { status: 404 });
