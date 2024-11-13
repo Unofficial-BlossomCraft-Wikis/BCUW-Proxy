@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-export async function GET(req: Request, { params }: { params: { imgkey: string } }) {
+export async function GET(req: Request, { params }: { params: Promise<{ imgkey: string }> }) {
   const paramsAwaited = await params;
   const imgResponse = await fetch(`https://utfs.io/a/co6j4hk884/${paramsAwaited.imgkey}`);
   
